@@ -1,0 +1,69 @@
+html, body{
+    margin: 0px;
+    padding: 0px;
+}
+html, body, #map {
+	width: 100%;
+	height: 100%;
+} 
+
+/* #mapDiv {
+    width: 800px;
+    height: 500px;
+} */
+
+/* pm2.5 */
+.SvgOverlay {
+	position: relative;
+	width: 900px;
+	height: 600px;           
+}
+
+.SvgOverlay svg {
+	position: absolute;
+	top: -4000px;
+	left: -4000px;
+	width: 8000px;
+	height: 8000px;        
+}
+
+#input {
+	position: absolute;
+	z-index: 9999;
+	width: 100%;
+	opacity: 0.9;
+}
+
+#show{
+	position: absolute;
+	z-index: 9999;
+	right: 10px;
+	top: 10px;
+	display: none;
+}
+
+#mark{
+	position: absolute;
+	z-index: 9999;
+	left: 10px;
+	bottom: 10px;
+}
+/* selection box */
+.selections {
+	right: 10px;
+	width: 120px;
+	bottom: 10px;
+
+	position: fixed;
+	background-color: #FFFFFF;
+	opacity: 0.9;
+	border-radius: 4px;
+	padding: 10px 10px 0 10px;
+}
+
+
+
+#selections label {
+	padding-bottom: 8px;
+	display: block;
+}

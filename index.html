@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT9x4r269ldTMuI13K9MqT2ZWrJo6poi4&callback=initMap" async defer type="text/javascript"></script>
+        <script src="https://nchu.io/Arrangement/0430/js/route.js"></script>
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel=stylesheet href="https://nchu.io/Arrangement/0430/css/_bootswatch.scss">
+        <link rel=stylesheet href="https://nchu.io/Arrangement/0430/css/_variables.scss">
+        <link rel=stylesheet type="text/css" href="https://nchu.io/Arrangement/0430/css/bootstrap.css">
+        <link rel=stylesheet type="text/css" href="https://nchu.io/Arrangement/0430/css/bootstrap.min.css">
+        <link rel=stylesheet type="text/css" href="https://nchu.io/Arrangement/0430/css/index.css">
+    </head>
+    
+    <body>
+        <div class="card border-light mb-3" id="input">
+          <div class="card-body">
+            <form action="javascript:trans()">
+                <fieldset>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label align-baseline text-right">起點</label>
+                        <input type="text" class="form-control col-7" placeholder="請輸入起點" id="start" name="S1" required>
+                        <button type="button" class="btn btn-default" style="float: right;" onclick="current();"> 
+                            <i class="material-icons">cached</i>
+                        </button>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label align-baseline text-right">終點</label>
+                        <input type="text" class="form-control col-7" placeholder="請輸入終點" id="end" name="S2" required>
+                        <button type="button" class="btn btn-default" style="float: right;" onclick="switch_points();"> 
+                            <i class="material-icons">import_export</i>
+                        </button>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3"></label>
+                        <select class="custom-select col-7" id="mode">
+                            <option value="WALKING">健走</option>
+                            <option value="DRIVING">腳踏車</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-2"></div>
+                        <div class="col-8 text-center">
+                           <input type="submit" value="開始規劃" name="B1" class="btn btn-outline-primary align-middle"> 
+                        </div>
+                        <div class="col-2 text-center" >
+                            <button type="button" class="btn btn-default" onclick="hide();"> 
+                                <i class="material-icons">arrow_upward</i>
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+          </div>
+        </div>
+
+        <div class="card border-light mb-3 align-middle" id="show">
+            <button type="button" class="btn btn-default" onclick="show();"> 
+                <i class="material-icons">arrow_downward</i>
+            </button>
+        </div>
+
+        <div id="map"></div>
+        <div id="mark" class="card border-light mb-3 align-middle">
+            <button type="button" class="btn btn-default" onclick="locate();"> 
+                <i class="material-icons">center_focus_strong</i>
+            </button> 
+        </div>
+        <div id="selections" class="selections">
+            <div class="content">
+                <div id="toggles">
+                    <label>
+                        <input type="checkbox" value="pm2.5" id="ckb_pm25">
+                        <span>pm2.5</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="traffic" id="ckb_traffic">
+                        <span>traffic</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
